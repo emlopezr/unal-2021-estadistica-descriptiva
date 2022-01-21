@@ -7,3 +7,5 @@ output: html_document
 
 library(readr)
 base_percepcion <- read_csv("C:/Users/lopez/Desktop/base_percepcion.csv")
+
+plot(x)
