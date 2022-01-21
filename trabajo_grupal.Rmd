@@ -1,0 +1,9 @@
+---
+title: "Untitled"
+author: "Emmanuel López Rodríguez"
+date: "21/1/2022"
+output: html_document
+---
+
+library(readr)
+base_percepcion <- read_csv("C:/Users/lopez/Desktop/base_percepcion.csv")
