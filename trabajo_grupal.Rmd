@@ -14,6 +14,11 @@ base_percepcion = read_csv("C:/Users/lopez/Desktop/EDE - Trabajo grupal 1/EDAED_
 base_percepcion = base_percepcion[-c(37),] # Fila vacía eliminada
 base_percepcion = subset(base_percepcion, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
 base_percepcion = base_percepcion %>% relocate(grupo, .before = Q01_B..La.Jagua) # Mover columna grupo al inicio
-colnames(base_percepcion) <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso')
+colnames(base_percepcion) <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso') #Renombrar columnas
+
+base_percepcion = base_percepcion[-c(23),] # Fila con datos atípicos en Q4, Q5 y Q6 eliminados
+base_percepcion = base_percepcion[-c(24),] # Fila con datos atípicos en Q1, Q2 y Q3 eliminados
+base_percepcion = base_percepcion[-c(5),] # Fila con un dato atípico en Q2 eliminada
+
 ```
 
