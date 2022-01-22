@@ -5,7 +5,15 @@ date: "21/1/2022"
 output: html_document
 ---
 
+```{r}
 library(readr)
-base_percepcion <- read_csv("C:/Users/lopez/Desktop/base_percepcion.csv")
+library(dplyr)
 
-plot(x)
+base_percepcion = read_csv("C:/Users/lopez/Desktop/EDE - Trabajo grupal 1/EDAED_TrabajoGrupal1/base_percepcion.csv") # Base de datos cargado
+
+base_percepcion = base_percepcion[-c(37),] # Fila vacía eliminada
+base_percepcion = subset(base_percepcion, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
+base_percepcion = base_percepcion %>% relocate(grupo, .before = Q01_B..La.Jagua) # Mover columna grupo al inicio
+colnames(base_percepcion) <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso')
+```
+
