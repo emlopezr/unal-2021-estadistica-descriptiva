@@ -56,10 +56,13 @@ base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 1014] <- 150
 # Correción de estudiante que suministró los datos de Q5 con menos ceros de lo esperado (Lo convertimos al formato general)
 base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 100] <- 100*10
 
-sumBaseOr = summary(base_percepcion) # Summary de la base original
-sumBaseCorr =summary(base_percepcionC) # Summary de la base corregida
-sumBaseCorr
+sumBaseOriginal = summary(base_percepcion) # Summary de la base original
+sumBaseCorregida =summary(base_percepcionC) # Summary de la base corregida
 
-
+grupo1 = base_percepcionC[base_percepcionC$Grupo==1,]
+grupo2 = base_percepcionC[base_percepcionC$Grupo==2,]
+grupo3 = base_percepcionC[base_percepcionC$Grupo==3,]
+grupo4 = base_percepcionC[base_percepcionC$Grupo==4,]
+grupo5 = base_percepcionC[base_percepcionC$Grupo==5,]
 
 ```
