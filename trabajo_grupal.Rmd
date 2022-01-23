@@ -1,69 +1,76 @@
 ---
-title: "Untitled"
-author: "Emmanuel López Rodríguez"
-date: "21/1/2022"
+title: "Trabajo grupal #1"
+author: "Equipo TF5"
+date: "26 de enero de 2022"
 output: html_document
 ---
 
 ```{r}
+# CARGA DE LIBRERÍAS
+
 library(readr)
 library(dplyr)
 
-base_percepcion = read_csv("base_percepcion.csv") # Base de datos cargado
+# CARGA DE LA BASE DE DATOS
 
-base_percepcion = base_percepcion[-c(37),] # Fila vacía eliminada
-base_percepcion = subset(base_percepcion, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
-base_percepcion = base_percepcion %>% relocate(grupo, .before = Q01_B..La.Jagua) # Mover columna grupo al inicio
-colnames(base_percepcion) <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso') #Renombrar columnas
+basePercepcionOriginal <- read_csv("base_percepcion.csv") # Base de datos cargado
+basePercepcionCorregida <- basePercepcionOriginal # Copiar la base de datos para tener la original y la corregida
 
-# base_percepcionC = base_percepcion[-c(23),] # Fila con datos atípicos en Q4, Q5 y Q6 eliminados
-# base_percepcionC = base_percepcionC[-c(24),] # Fila con datos atípicos en Q1, Q2 y Q3 eliminados
-# base_percepcionC = base_percepcionC[-c(5),]  # Fila con un dato atípico en Q2 eliminada
+# DEPURACIÓN DE LA BASE DE DATOS
 
-base_percepcionC = base_percepcion
+basePercepcionCorregida <- basePercepcionCorregida[-c(37),] # Fila vacía eliminada
+basePercepcionCorregida <- subset(basePercepcionCorregida, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
+basePercepcionCorregida <- basePercepcionCorregida %>% relocate(grupo, .before = Q01_B..La.Jagua) # Mover columna grupo al inicio
+nombresNuevosColumnas <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso')
+colnames(basePercepcionCorregida) <- nombresNuevosColumnas #Renombrar columnas
 
-# Correción de estudiante que suministró los datos de Q1, Q2 y Q3 en millones completos (Lo convertimos al formato general)
-base_percepcionC$Q1_LaJagua[base_percepcionC$Q1_LaJagua == 13200000] <- 13200000/10^6
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 39600000] <- 39600000/10^6
-base_percepcionC$Q3_Cerromatoso[base_percepcionC$Q3_Cerromatoso == 1320000] <- 1320000/10^6
+# CORRECCIÓN DE DATOS ATÍPICOS
 
-# Correción de estudiante que suministró los datos de Q2 con más ceros de lo esperado (Lo convertimos al formato general)
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 52000] <- 52000/10^3
+## Correción de estudiante que suministró los datos de Q1, Q2 y Q3 en millones completos (Lo convertimos al formato general)
+basePercepcionCorregida$Q1_LaJagua[basePercepcionCorregida$Q1_LaJagua == 13200000] <- 13200000/10^6
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 39600000] <- 39600000/10^6
+basePercepcionCorregida$Q3_Cerromatoso[basePercepcionCorregida$Q3_Cerromatoso == 1320000] <- 1320000/10^6
 
-# Correción de estudiante que suministró los datos de Q2 con menos ceros de lo esperado (Lo convertimos al formato general)
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4] <- 4*10
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4.2] <- 4.2*10
+## Correción de estudiante que suministró los datos de Q2 con más ceros de lo esperado (Lo convertimos al formato general)
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 52000] <- 52000/10^3
 
-# Correción de estudiante que suministró los datos de Q4, Q5 y Q6 con 2 ceros de más (Lo convertimos al formato general)
-base_percepcionC$Q4_LaJagua[base_percepcionC$Q4_LaJagua == 15000] <- 15000/10^2
-base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 50000] <- 50000/10^2
-base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 4000] <- 4000/10^2
+## Correción de estudiante que suministró los datos de Q2 con menos ceros de lo esperado (Lo convertimos al formato general)
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 4] <- 4*10
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 4.2] <- 4.2*10
 
-# Correción de estudiantes que en las preguntas Q2 y Q3 truncaron sus respuestas (Respuesta de Q2 en Q3 y viceversa)
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 0.5] <- 44
-base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 1.4] <- 37
-base_percepcionC$Q3_Cerromatoso[base_percepcionC$Q3_Cerromatoso == 44] <- 0.5
-base_percepcionC$Q3_Cerromatoso[base_percepcionC$Q3_Cerromatoso == 37] <- 1.4
+## Correción de estudiantes que en las preguntas Q2 y Q3 truncaron sus respuestas (Respuesta de Q2 en Q3 y viceversa)
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 0.5] <- 44
+basePercepcionCorregida$Q2_CentroDelCesar[basePercepcionCorregida$Q2_CentroDelCesar == 1.4] <- 37
+basePercepcionCorregida$Q3_Cerromatoso[basePercepcionCorregida$Q3_Cerromatoso == 44] <- 0.5
+basePercepcionCorregida$Q3_Cerromatoso[basePercepcionCorregida$Q3_Cerromatoso == 37] <- 1.4
 
-# Correción de estudiantes que en las preguntas Q5 y Q6 truncaron sus respuestas (Respuesta de Q5 en Q6 y viceversa)
-base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 90] <- 900
-base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 115] <- 850
-base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 150] <- 1014
-base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 900] <- 90
-base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 850] <- 115
-base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 1014] <- 150
+## Correción de estudiante que suministró los datos de Q4, Q5 y Q6 con 2 ceros de más (Lo convertimos al formato general)
+basePercepcionCorregida$Q4_LaJagua[basePercepcionCorregida$Q4_LaJagua == 15000] <- 15000/10^2
+basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCesar == 50000] <- 50000/10^2
+basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 4000] <- 4000/10^2
 
 # Correción de estudiante que suministró los datos de Q5 con menos ceros de lo esperado (Lo convertimos al formato general)
-base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 100] <- 100*10
+basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCesar == 100] <- 100*10
 
-sumBaseOriginal = summary(base_percepcion) # Summary de la base original
-sumBaseCorregida =summary(base_percepcionC) # Summary de la base corregida
+# Correción de estudiantes que en las preguntas Q5 y Q6 truncaron sus respuestas (Respuesta de Q5 en Q6 y viceversa)
+basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCesar == 90] <- 900
+basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCesar == 115] <- 850
+basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCesar == 150] <- 1014
+basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 900] <- 90
+basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 850] <- 115
+basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 1014] <- 150
 
-# Se discretiza la base de datos por cada uno de los grupos
-grupo1 = base_percepcionC[base_percepcionC$Grupo==1,]
-grupo2 = base_percepcionC[base_percepcionC$Grupo==2,]
-grupo3 = base_percepcionC[base_percepcionC$Grupo==3,]
-grupo4 = base_percepcionC[base_percepcionC$Grupo==4,]
-grupo5 = base_percepcionC[base_percepcionC$Grupo==5,]
+# SUMMARYS DE LAS BASES DE DATOS ORIGINAL Y CORREGIDA PARA COMPRARAR
+
+summaryBaseOriginal <- summary(basePercepcionOriginal)
+summaryBaseCorregida <- summary(basePercepcionCorregida)
+
+# DISCRETIZACIÓN POR GRUPOS PARA EL ANÁLISIS 
+
+grupo1 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==1,]
+grupo2 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==2,]
+grupo3 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==3,]
+grupo4 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==4,]
+grupo5 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==5,]
 
 ```
