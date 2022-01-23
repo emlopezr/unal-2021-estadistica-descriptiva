@@ -9,7 +9,7 @@ output: html_document
 library(readr)
 library(dplyr)
 
-base_percepcion = read_csv("C:/Users/lopez/Desktop/EDE - Trabajo grupal 1/EDAED_TrabajoGrupal1/base_percepcion.csv") # Base de datos cargado
+base_percepcion = read_csv("base_percepcion.csv") # Base de datos cargado
 
 base_percepcion = base_percepcion[-c(37),] # Fila vacía eliminada
 base_percepcion = subset(base_percepcion, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
