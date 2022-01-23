@@ -59,6 +59,7 @@ base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 100] <-
 sumBaseOriginal = summary(base_percepcion) # Summary de la base original
 sumBaseCorregida =summary(base_percepcionC) # Summary de la base corregida
 
+# Se discretiza la base de datos por cada uno de los grupos
 grupo1 = base_percepcionC[base_percepcionC$Grupo==1,]
 grupo2 = base_percepcionC[base_percepcionC$Grupo==2,]
 grupo3 = base_percepcionC[base_percepcionC$Grupo==3,]
