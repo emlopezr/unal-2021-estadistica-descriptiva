@@ -1,9 +1,13 @@
 ---
-title: "Trabajo grupal #1"
+title: "Comparación de gráficas (Primer trabajo en grupo)"
 author: "Equipo TF5"
 date: "26 de enero de 2022"
-output: html_document
+output:
+  html_document:
+    toc: true
+    theme: united
 ---
+# a
 
 ```{r}
 # CARGA DE LIBRERÍAS
@@ -74,3 +78,4 @@ grupo4 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==4,]
 grupo5 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==5,]
 
 ```
+# b
