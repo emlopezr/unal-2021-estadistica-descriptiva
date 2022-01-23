@@ -30,6 +30,10 @@ base_percepcionC$Q3_Cerromatoso[base_percepcionC$Q3_Cerromatoso == 1320000] <- 1
 # Correción de estudiante que suministró los datos de Q2 con más ceros de lo esperado (Lo convertimos al formato general)
 base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 52000] <- 52000/10^3
 
+# Correción de estudiante que suministró los datos de Q2 con menos ceros de lo esperado (Lo convertimos al formato general)
+base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4] <- 4*10
+base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4.2] <- 4.2*10
+
 # Correción de estudiante que suministró los datos de Q4, Q5 y Q6 con 2 ceros de más (Lo convertimos al formato general)
 base_percepcionC$Q4_LaJagua[base_percepcionC$Q4_LaJagua == 15000] <- 15000/10^2
 base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 50000] <- 50000/10^2
@@ -49,7 +53,17 @@ base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 900] <- 90
 base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 850] <- 115
 base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 1014] <- 150
 
-sumBaseOr = summary(base_percepcion) # Summary de la base original
-sumBaseCorr =summary(base_percepcionC) # Summary de la base corregida
+# Correción de estudiante que suministró los datos de Q5 con menos ceros de lo esperado (Lo convertimos al formato general)
+base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 100] <- 100*10
+
+sumBaseOriginal = summary(base_percepcion) # Summary de la base original
+sumBaseCorregida =summary(base_percepcionC) # Summary de la base corregida
+
+# Se discretiza la base de datos por cada uno de los grupos
+grupo1 = base_percepcionC[base_percepcionC$Grupo==1,]
+grupo2 = base_percepcionC[base_percepcionC$Grupo==2,]
+grupo3 = base_percepcionC[base_percepcionC$Grupo==3,]
+grupo4 = base_percepcionC[base_percepcionC$Grupo==4,]
+grupo5 = base_percepcionC[base_percepcionC$Grupo==5,]
 
 ```
