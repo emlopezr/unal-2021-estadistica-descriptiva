@@ -7,19 +7,62 @@ output:
     toc: true
     theme: united
 ---
-# a
 
-```{r}
-# CARGA DE LIBRERÍAS
+# Presentación
 
+- Estadística Descriptiva y Análisis Exploratorio de Datos
+- Universidad Nacional de Colombia sede Medellín
+- Semestre 2021-02
+
+### Miembros del equipo
+
+- Andrés Felipe Aparicio Mestre - [anapariciom@unal.edu.co](mailto:anapariciom@unal.edu.co)
+- Emmanuel Lopez Rodríguez - [emlopezr@unal.edu.co](mailto:emlopezr@unal.edu.co)
+- José David Cardona Soto - [jcardonaso@unal.edu.co](mailto:jcardonaso@unal.edu.co)
+- Jerónimo Gómez Restrepo - [jegomezre@unal.edu.co](mailto:jegomezre@unal.edu.co)
+- Samuel Alahin Lopez Cadavid - [samlopez@unal.edu.co](mailto:samlopez@unal.edu.co)
+
+# Introducción y contextualización (FALTA)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(width = 100)
+```
+
+```{r, include=FALSE}
+# CARGA DE LIBRERÍAS USADAS
 library(readr)
 library(dplyr)
+library(kableExtra)
 
 # CARGA DE LA BASE DE DATOS
-
-basePercepcionOriginal <- read_csv("base_percepcion.csv") # Base de datos cargado
+basePercepcionOriginal <- read_csv("base_percepcion.csv")
 basePercepcionCorregida <- basePercepcionOriginal # Copiar la base de datos para tener la original y la corregida
+```
 
+```{r, echo=FALSE}
+nombresNuevosColumnasKnit <- c('Enviado', 'Completado', 'Q1','Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Grupo')
+colnames(basePercepcionOriginal) <- nombresNuevosColumnasKnit #Renombrar columnas para estética en el Knit
+head(basePercepcionOriginal) %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+*Cabe recalcar que por la estética del informe se cambiaron los nombres de las columnas de la base de datos original antes de imprimirla*
+
+
+# Depuración de la base de datos
+
+Como podemos observar en la base de datos original, se cuenta con 9 columnas, pero llegamos a la conclusión que para el estudio que se va a realizar a partir de esta, nos son inservibles 2 de ellas. Las columnas que eliminaremos son:
+
+- **Enviado:** Que nos dice la hora a la cual el estudiante envió sus respuestas al sistema, en este estudio no nos enfocaremos en el tiempo que les tomó a los estudiantes rersponder, si no en sus respuestas.
+
+- **Completado:** Que nos indica si el estudiante envió sus respuestas al sistema. En esta columna todos los estudiantes tienen el valor de *"y"*, el cual indica que enviaron la pueba, por lo que no nos es relevante esta información.
+
+También, notamos que una de las filas de la base de datos contenía solo uno de sus campos con informacón, el resto estaban vacíos *(Valor NA)*. Por tanto decidimos eliminarla.
+
+Posteriormente, decidimos por cambiar el nombre de las columnas que nos quedaban. Esto, para facilitarnos el trabajo a la hora de necesitar referenciarlas dentro del código.
+
+Por último, optamos por mover la columna **"Grupo"** al primer lugar de la base de datos, ya que próximamente será una variable muy importante dentro del estudio
+
+```{r, include=FALSE}
 # DEPURACIÓN DE LA BASE DE DATOS
 
 basePercepcionCorregida <- basePercepcionCorregida[-c(37),] # Fila vacía eliminada
@@ -27,7 +70,25 @@ basePercepcionCorregida <- subset(basePercepcionCorregida, select = -c(Enviado.e
 basePercepcionCorregida <- basePercepcionCorregida %>% relocate(grupo, .before = Q01_B..La.Jagua) # Mover columna grupo al inicio
 nombresNuevosColumnas <- c('Grupo','Q1_LaJagua','Q2_CentroDelCesar', 'Q3_Cerromatoso', 'Q4_LaJagua', 'Q5_CentroDelCesar', 'Q6_Cerromatoso')
 colnames(basePercepcionCorregida) <- nombresNuevosColumnas #Renombrar columnas
+```
 
+```{r, echo=FALSE}
+head(basePercepcionCorregida) %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+### Corrección de datos atípicos
+
+Ahora, notamos que dentro de las respuestas de los estudiantes existen datos atípicos que, de no ser tratados afectarán nuestras conclusiones del estudio. Para mostrar esto, haremos un *Summary* de la base de datos
+
+```{r}
+summary(basePercepcionCorregida)
+```
+
+Como se puede observar, hay estudiantes que suministraron los datos en proporciones erroneas. Durante el transcurso de la prueba, se indicó que los datos en millones se debían de escribir de manera resumida *(Ejemplo: "26.4" en lugar de "26'400.000")* y los datos con parte fraccionaria debían ser separados con punto, sin embargo, algunos estudiantes hicieron caso omiso de las indicaciones, por lo que se presentan datos atípicos muy grandes en comparación a la media de la columna. Tratamos esos datos dándoles una proporción que los ajustara mucho mejor a la media de la columna.
+
+También, notamos casos puntuales donde se trucaba la respuesta de una pregunta con otra sucesiva a ella *(Ejemplo: Respuesta de Q2 en Q3 y viceversa)*, por lo que para no desperdiciar los datos de estos estudiantes, optamos por mover manualmente los valores entre columnas en los que al hacer el análisis calzaban perfectamente dentro de la media.
+
+```{r, include=FALSE}
 # CORRECCIÓN DE DATOS ATÍPICOS
 
 ## Correción de estudiante que suministró los datos de Q1, Q2 y Q3 en millones completos (Lo convertimos al formato general)
@@ -63,7 +124,23 @@ basePercepcionCorregida$Q5_CentroDelCesar[basePercepcionCorregida$Q5_CentroDelCe
 basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 900] <- 90
 basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 850] <- 115
 basePercepcionCorregida$Q6_Cerromatoso[basePercepcionCorregida$Q6_Cerromatoso == 1014] <- 150
+```
 
+Luego de hacer toda la depuración, observaremos de nuevo el *Summary* de la base de datos corregida. Donde se puede analizar que ahora los datos extremos de cada columna están mucho más cerca entre si y la media de las columnas es un valor mucho más realista.
+
+```{r}
+summary(basePercepcionCorregida)
+```
+
+La base de datos depurada. Nos queda de la siguiente manera:
+
+```{r}
+head(basePercepcionCorregida) %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+# Comparación del desempeño entre gráficas (FALTA)
+
+```{r, include=FALSE}
 # SUMMARYS DE LAS BASES DE DATOS ORIGINAL Y CORREGIDA PARA COMPRARAR
 
 summaryBaseOriginal <- summary(basePercepcionOriginal)
@@ -76,6 +153,12 @@ grupo2 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==2,]
 grupo3 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==3,]
 grupo4 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==4,]
 grupo5 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==5,]
-
 ```
-# b
+
+# Análisis de los resultados (FALTA)
+
+# Propuesta de experimento similar (FALTA)
+
+# Conclusiones (FALTA)
+
+# Bibliografía (FALTA)
