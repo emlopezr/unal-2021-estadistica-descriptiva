@@ -9,7 +9,7 @@ output: html_document
 library(readr)
 library(dplyr)
 
-base_percepcion = read_csv("C:/Users/lopez/Desktop/EDE - Trabajo grupal 1/EDAED_TrabajoGrupal1/base_percepcion.csv") # Base de datos cargado
+base_percepcion = read_csv("base_percepcion.csv") # Base de datos cargado
 
 base_percepcion = base_percepcion[-c(37),] # Fila vacía eliminada
 base_percepcion = subset(base_percepcion, select = -c(Enviado.el.,Completado)) # Columnas innecesarias eliminadas
@@ -30,6 +30,10 @@ base_percepcionC$Q3_Cerromatoso[base_percepcionC$Q3_Cerromatoso == 1320000] <- 1
 # Correción de estudiante que suministró los datos de Q2 con más ceros de lo esperado (Lo convertimos al formato general)
 base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 52000] <- 52000/10^3
 
+# Correción de estudiante que suministró los datos de Q2 con menos ceros de lo esperado (Lo convertimos al formato general)
+base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4] <- 4*10
+base_percepcionC$Q2_CentroDelCesar[base_percepcionC$Q2_CentroDelCesar == 4.2] <- 4.2*10
+
 # Correción de estudiante que suministró los datos de Q4, Q5 y Q6 con 2 ceros de más (Lo convertimos al formato general)
 base_percepcionC$Q4_LaJagua[base_percepcionC$Q4_LaJagua == 15000] <- 15000/10^2
 base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 50000] <- 50000/10^2
@@ -49,7 +53,13 @@ base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 900] <- 90
 base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 850] <- 115
 base_percepcionC$Q6_Cerromatoso[base_percepcionC$Q6_Cerromatoso == 1014] <- 150
 
+# Correción de estudiante que suministró los datos de Q5 con menos ceros de lo esperado (Lo convertimos al formato general)
+base_percepcionC$Q5_CentroDelCesar[base_percepcionC$Q5_CentroDelCesar == 100] <- 100*10
+
 sumBaseOr = summary(base_percepcion) # Summary de la base original
 sumBaseCorr =summary(base_percepcionC) # Summary de la base corregida
+sumBaseCorr
+
+
 
 ```
