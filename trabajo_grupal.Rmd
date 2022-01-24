@@ -34,6 +34,8 @@ options(width = 100)
 library(readr)
 library(dplyr)
 library(kableExtra)
+#library(ggplot2)
+library(plotly)
 
 # CARGA DE LA BASE DE DATOS
 basePercepcionOriginal <- read_csv("base_percepcion.csv")
@@ -138,7 +140,7 @@ La base de datos depurada. Nos queda de la siguiente manera:
 head(basePercepcionCorregida) %>% kbl() %>% kable_material(c("striped", "hover"))
 ```
 
-# Comparación del desempeño entre gráficas (FALTA)
+# Comparación del desempeño en la percepción de las gráficas(FALTA)
 
 ```{r, include=FALSE}
 # SUMMARYS DE LAS BASES DE DATOS ORIGINAL Y CORREGIDA PARA COMPRARAR
@@ -154,8 +156,77 @@ grupo3 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==3,]
 grupo4 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==4,]
 grupo5 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==5,]
 ```
+Tabla de las medias de los datos de cada pregunta en cada uno de los grupos
+
+```{r}
+# Se calculan las medias de los datos de cada pregunta en cada uno de los grupos
+Grupos = c(1,2,3,4,5)
+Q1 = c(mean(grupo1$Q1_LaJagua),mean(grupo2$Q1_LaJagua),mean(grupo3$Q1_LaJagua),
+              mean(grupo4$Q1_LaJagua),mean(grupo5$Q1_LaJagua))
+Q2 = c(mean(grupo1$Q2_CentroDelCesar),mean(grupo2$Q2_CentroDelCesar),mean(grupo3$Q2_CentroDelCesar),
+              mean(grupo4$Q2_CentroDelCesar),mean(grupo5$Q2_CentroDelCesar))
+Q3 = c(mean(grupo1$Q3_Cerromatoso),mean(grupo2$Q3_Cerromatoso),mean(grupo3$Q3_Cerromatoso),
+              mean(grupo4$Q3_Cerromatoso),mean(grupo5$Q3_Cerromatoso))
+Q4 = c(mean(grupo1$Q4_LaJagua),mean(grupo2$Q4_LaJagua),mean(grupo3$Q4_LaJagua),
+              mean(grupo4$Q4_LaJagua),mean(grupo5$Q4_LaJagua))
+Q5 = c(mean(grupo1$Q5_CentroDelCesar),mean(grupo2$Q5_CentroDelCesar),mean(grupo3$Q5_CentroDelCesar),
+              mean(grupo4$Q5_CentroDelCesar),mean(grupo5$Q5_CentroDelCesar))
+Q6 = c(mean(grupo1$Q6_Cerromatoso),mean(grupo2$Q6_Cerromatoso),mean(grupo3$Q6_Cerromatoso),
+              mean(grupo4$Q6_Cerromatoso),mean(grupo5$Q6_Cerromatoso))
+
+# Creación de un data-frame para la media de los resultados de cada grupo
+medias <- data.frame(Grupos,Q1,Q2,Q3,Q4,Q5,Q6)
+medias %>% kbl() %>% kable_material(c("striped", "hover"))
+
+```
+
+Tabla de las desviaciones estandar de los datos de cada pregunta en cada uno de los grupos
+
+```{r}
+# Se calculan las desviaciones estandar de los datos de cada pregunta en cada uno de los grupos
+Grupos = c(1,2,3,4,5)
+Q1 = c(sd(grupo1$Q1_LaJagua),sd(grupo2$Q1_LaJagua),sd(grupo3$Q1_LaJagua),
+              sd(grupo4$Q1_LaJagua),sd(grupo5$Q1_LaJagua))
+Q2 = c(sd(grupo1$Q2_CentroDelCesar),sd(grupo2$Q2_CentroDelCesar),sd(grupo3$Q2_CentroDelCesar),
+              sd(grupo4$Q2_CentroDelCesar),sd(grupo5$Q2_CentroDelCesar))
+Q3 = c(sd(grupo1$Q3_Cerromatoso),sd(grupo2$Q3_Cerromatoso),sd(grupo3$Q3_Cerromatoso),
+              sd(grupo4$Q3_Cerromatoso),sd(grupo5$Q3_Cerromatoso))
+Q4 = c(sd(grupo1$Q4_LaJagua),sd(grupo2$Q4_LaJagua),sd(grupo3$Q4_LaJagua),
+              sd(grupo4$Q4_LaJagua),sd(grupo5$Q4_LaJagua))
+Q5 = c(sd(grupo1$Q5_CentroDelCesar),sd(grupo2$Q5_CentroDelCesar),sd(grupo3$Q5_CentroDelCesar),
+              sd(grupo4$Q5_CentroDelCesar),sd(grupo5$Q5_CentroDelCesar))
+Q6 = c(sd(grupo1$Q6_Cerromatoso),sd(grupo2$Q6_Cerromatoso),sd(grupo3$Q6_Cerromatoso),
+              sd(grupo4$Q6_Cerromatoso),sd(grupo5$Q6_Cerromatoso))
+
+# Creación de un data-frame para la desviaciones de los resultados de cada grupo
+desviaciones <- data.frame(Grupos,Q1,Q2,Q3,Q4,Q5,Q6)
+desviaciones %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+```{r}
+
+#ggplot(desviaciones, aes(x=Grupos,y=))
+
+grafica_123 = plot_ly(desviaciones, x=desviaciones$Grupos, y=desviaciones$Q1, name="Q1", type="bar")%>%
+  add_trace(y=desviaciones$Q2, name="Q2")%>%
+  add_trace(y=desviaciones$Q3, name="Q3")%>%
+  layout(title="Comparación de desviaciones preguntas Q1, Q2 Y Q3", xaxis=list(title="Grupos"), 
+         yaxis=list(title="Desviación"), legend=list(title=list(text="<b>Preguntas</b>")))
+
+grafica_456 = plot_ly(desviaciones, x=desviaciones$Grupos, y=desviaciones$Q4, name="Q4", type="bar")%>%
+  add_trace(y=desviaciones$Q5, name="Q5")%>%
+  add_trace(y=desviaciones$Q6, name="Q6")%>%
+  layout(title="Comparación de desviaciones preguntas Q4, Q5 Y Q6", xaxis=list(title="Grupos"),
+         yaxis=list(title="Desviación"), legend=list(title=list(text="<b>Preguntas</b>")))
+
+grafica_123
+grafica_456
+
+```
+
 
 # Análisis de los resultados (FALTA)
+
 
 # Propuesta de experimento similar (FALTA)
 
