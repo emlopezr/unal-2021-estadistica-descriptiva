@@ -255,15 +255,13 @@ Antes de hacer un análisis de los resultados es necesario tener presente lo sig
 
 A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas de la desviación estándar__, se puede hacer el siguiente análisis:  
 
-- __La pregunta Q1__, producción esperada en la Jagua, y __la pregunta Q3__, producción esperada en Cerromatoso, tuvieron una media muy similar, sin importar el tipo de gráfico. De igual forma fueron las preguntas con menor desviación estándar en los diferentes tipos de gráficos. A partir de esto podemos concluir que los estudiantes respondieron con menor dispersión a estas preguntas, es decir que las respuestas que dieron fueron muy cercanas y más fáciles de predecir.
+- __La pregunta Q1__, producción esperada en la Jagua, y __la pregunta Q3__, producción esperada en Cerromatoso, tuvieron una media muy similar, sin importar el tipo de gráfico. De igual forma fueron las preguntas con menor desviación estándar en los diferentes tipos de gráficos.
 
-- __La pregunta Q2__, producción esperada en el Centro del Cesar, y __la pregunta Q5__, regalías e impuestos en el Centro del Cesar, presentaron una mayor desviación estándar en comparación a las otras preguntas y sin importar el tipo de gráfico. A partir de esto se puede concluir que fueron las preguntas donde se fue más difícil predecir el valor correspondiente en los diferentes gráficos y hubo mayor dispersión en las respuestas.
+- __La pregunta Q2__, producción esperada en el Centro del Cesar, y __la pregunta Q5__, regalías e impuestos en el Centro del Cesar, presentaron una mayor desviación estándar en comparación a las otras preguntas y sin importar el tipo de gráfico.
 
-- __La gráfica del grupo 5__, barras horizontales, y __la gráfica del grupo 2__, barras verticales, fueron las que obtuvieron menor desviación estándar en las diferentes preguntas. A partir de esto se puede concluir que fue más fácil para los estudiantes predecir el valor de las diferentes preguntas usando estas gráficas, ya que las respuestas fueron similares (Son las gráficas con menor dispersión). De esta forma se concluye que el __gráfico de barras horizontales es el más recomendable__ para realizar experimentos de percepción, como el que fue realizado, __seguido del gráfico de barras verticales__. Es de preferencia el de barras ya que tiene menor dispersión en comparación al de pasteles. Aún así el de pasteles sigue siendo muy bueno.
+- __La gráfica del grupo 5__, barras horizontales, y __la gráfica del grupo 2__, barras verticales, fueron las que obtuvieron menor desviación estándar en las diferentes preguntas.
 
-- __La gráfica del grupo 3__, de pasteles, puede ser una opción válida aunque existen gráficas mejores como las anteriormente mencionadas, ya que estas poseen menor desviación estándar en la mayoría de preguntas, en comparación con el gráfico 3.
-
-- __La gráfica del grupo 1__, círculos y cubos, y __la gráfica del grupo 4__, pasteles 3D, fueron las que presentaron mayor desviación estándar en las diferentes preguntas y en comparación con los demás tipos de gráficos. Esto quiere decir que a los estudiantes se les hizo más difícil dar una respuesta usando estas gráficas. De esta forma se concluye que los gráficos de __círculos y cubos, y de pasteles 3D, son los menos recomendables__ para realizar experimentos de percepción como el realizado, siendo el de círculos y cubos peor.
+- __La gráfica del grupo 1__, círculos y cubos, y __la gráfica del grupo 4__, pasteles 3D, fueron las que presentaron mayor desviación estándar en las diferentes preguntas y en comparación con los demás tipos de gráficos. 
 
 Observando el [artículo original](https://www.elcolombiano.com/negocios/economia/mineria-que-tanto-afecta-al-medioambiente-EB13561207) podemos ver que los valores reales son:
 
@@ -276,8 +274,7 @@ medias = medias %>% add_row("Grupos" = 6, "Q1" = 8.8, "Q2" = 42, "Q3" = 0.044, "
 restas = medias[1:6,]- medias[rep(6,6),]
 restas = restas[1:5,]
 restas[1] = c(1,2,3,4,5)
-# restas %>% kbl() %>% kable_material(c("striped", "hover"))
-restas
+restas %>% kbl() %>% kable_material(c("striped", "hover"))
 ```
 La anterior tabla muestra la diferencia que hay entre la media respondida por cada grupo en cada una de las respuestas y el valor real que sacamos del estudio. Con base en esto podemos observar:
 
@@ -297,6 +294,12 @@ Se puede notar que para las 3 primeras preguntas (Acerca de la producción esper
 
 Por otro lado para las preguntas 4, 5 y 6. La gráfica que más se acercó al valor real fue la del grupo 5 (Barras horizontales) y la gráfica que más se alejó del valor real fue la del grupo 1 (Cubos y círculos).
 
+A partir de esto se puede concluir que fue más fácil para los estudiantes predecir el valor de las diferentes preguntas usando las gráficas __Q2__ y __Q5__, ya que las respuestas fueron similares (Son las gráficas con menor dispersión) y la difrencia entre la respuesta media y el valor real fue menor(La predicción no está tan alejada del valor real). De esta forma se concluye que el __gráfico de barras horizontales es el más recomendable__ para representar datos y generar mejor percepción, __seguido del gráfico de barras verticales__.
+
+__La gráfica Q3__, puede ser una opción válida, aunque existen gráficas mejores como las anteriormente mencionadas, ya que estas poseen menor desviación estándar en la mayoría de preguntas, en comparación con el gráfico 3.
+
+Por otro lado, a los estudiantes se les hizo más difícil dar una respuesta usando las graficas __Q1__ y __Q4__, ya que las respuestas no fueron tan uniformes(Son las gráficas con mayor dispersión) y la diferencia entre la respuesta media y el valor real fue mayor(La predicción está alejada del valor real). De esta forma se concluye que los gráficos de __círculos y cubos, y de pasteles 3D, son los menos recomendables__ para representar datos y generar una buena percepción, siendo el de círculos y cubos peor.
+
 # Propuesta de experimento similar
 
 https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr
@@ -305,7 +308,28 @@ Se presenta un experimento sobre los contagios de COVID 19 que en esta base de d
 
 Las gráficas se expresarían por la fecha y cuidades con mayores contagios en tiempos determinamos, también una variable importante podría ser el sexo, hacer comparaciones sobre que tipo de sexo se contagian más y de las variables más relevantes podrían el estado actual de las personas contagiadas. ¿De las personas que dan positivo a esta enfermedad, cuáles están en la casa y cuáles hospitalizadas? Teniendo en cuenta la fecha en la que se diagnostica positivo la persona, ¿Cuánto tiempo tardó en recuperarse? ¿Qué cuidad informa mayores contagios?
 
-# Conclusiones (FALTA)
+# Conclusiones 
+A partir de los análisis realizados anteriormente, se llegan a las siguientes conclusiones:
+
+1. __Q2__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepción __uniforme__ por parte de los estudiantes en la __producción esperada__.
+
+2. __Q3__, que hace referencia a Cerromatoso, presenta la __menor dispersión de los datos__, lo que indica que la percecpión de los estudiantes fue __uniforme en la producción esperada__.
+
+3. __Q5__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepcion __uniforme__ por parte de los estudiantes en __Regalias e impuestos__.
+
+4. __Q4__, que hace referencia a La Jagua, presenta la __menor dispersión de los datos__, lo que indica que la percepcion de los estudiantes fue __uniforme en Regalias e impuestos__.
+
+5. Las gráficas de __barras verticales y horizontales__, generan percepciones __más uniformes__. Siendo la de __barras horizontales__, la que obtuvo respuestas __más similares__.
+
+6. La gráfica de __circulos y cubos__ junto con la de __pasteles 3D__, generan percepciones __más dispersas__. Siendo la de __circulos y cubos__ la que obtuvo respuestas __menos uniformes__.
+
+7. Las percepciones generadas con la gráfica de __barras horizontales__, son las __más cercanas al valor real__.
+
+8. Las percepciones generadas por el gráfico de __cubos y circulos__, son las __más alejadas del valor real__.
+
+9. La gráfica de __barras horizontales__ es la que genera __resultados más óptimos__, cuando se quiere evaluar la __percepción__ de las personas.
+
+10. La gráfica de __cubos y circulos__ es la que genera los __peores resultados__ a la hora de evaluar la __percepción__ de las personas.
 
 # Bibliografía
 
