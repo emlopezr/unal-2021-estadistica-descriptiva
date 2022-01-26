@@ -22,7 +22,11 @@ output:
 - Jerónimo Gómez Restrepo - [jegomezre@unal.edu.co](mailto:jegomezre@unal.edu.co)
 - Samuel Alahin Lopez Cadavid - [samlopez@unal.edu.co](mailto:samlopez@unal.edu.co)
 
-# Introducción y contextualización (FALTA)
+# Introducción y contextualización  
+En el articulo titulado [La minería: un debate entre el riesgo y su aporte](https://www.elcolombiano.com/negocios/economia/mineria-que-tanto-afecta-al-medioambiente-EB13561207) del periódico el Colombiano, aseguran que promover la mineria legal en Colombia traera mayores empleos para la población, mayor inversión en el país y númerosos ingresos económicos gracias a la actividad extractiva minera. Durante años se ha creido que la mineria trae consigo grandes afectaciones ambientales, por la contaminación de fuentes hídricas y del suelo, y a partir de esto afectaciones para la salud, sin embargo profesores y geólogos aseguran que estás afirmaciones son falsas, ya que con el avance tecnológico de hoy en día, estas afectacionesson mitigadas y el impacto ambiental es casi nulo.  
+En el documento se muestra un gráfico de cubos y circulos, el cuál provee información acerca de la producción esperada (en toneladas) de mineral, los empleos generados y los ingresos anuales por regalías e impuestos anuales para el país (en US$ millones), en algunas minas importantes del país las cuales son: El Cerrejon, La Jagua, Centro del Cesar y Cerromatoso. De esta forma se argumenta la promoción de la minería.    
+Inicialmente se les presentó a los estudiantes dos gráficos, solo con el valor de la producción esperada o de las regalías de la mina El Cerrejon, y a partir de este valor debían de estimar a ojo el correspondiente valor para las demás minas.  
+Una de las gráficas correspondia a la producción esperada y la otra a las regalías e impuestos anuales. Las gráficas podían ser de los siguientes 5 tipos: circulos y cubos, barras verticales, pasteles, pasteles 3D y barras horizontales. Se hizo la recolección de las respuestas de los estudiantes, y a partir de estos datos se debía realizar un análisis exploratorio. A continuación se muestran algunos registros de la base de datos original:  
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -231,23 +235,23 @@ Antes de hacer un analisis de los resultados es necesario tener presente lo sigu
 
 - **Grupo 1**: Corresponde a la gráfica de circulos y cubos.  
   
-![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\01_circulos_cubos (1).png){width='500px' height='250px'}  
+![](01_circulos_cubos (1).png){width='500px' height='250px'}  
 
 - **Grupo 2**: Corresponde a la gráfica de barras verticales.   
   
-![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\02_barras_verticales.png){width='600px' height='450px'}  
+![](02_barras_verticales.png){width='600px' height='450px'}  
 
 - **Grupo 3**: Corresponde a la gráfica de pasteles.  
   
-![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\03_pasteles.png){width='600px' height='450px'}  
+![](03_pasteles.png){width='600px' height='450px'}  
 
 - **Grupo 4**: Corresponde a la gráfica de pasteles 3D.  
   
-![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\04_pasteles3D.png){width='600px' height='450px'}  
+![](04_pasteles3D.png){width='600px' height='450px'}  
 
 - **Grupo 5**: Corresponde a la gráfica de barra horizontales.  
   
-![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\05_barras_horizontales.png){width='600px' height='450px'}  
+![](05_barras_horizontales.png){width='600px' height='450px'}  
 
 A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas de la desviación estandar__, se puede hacer el siguiente análisis:  
 
@@ -272,7 +276,7 @@ ggplot(data = mtcars, aes(x = gear)) +
   coord_flip()
 ```
 
-Se propone una gráfica donde pueda ser leída por cualquier persona sin dificualtad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar (en este caso sobre los contagios del virtus COVID 19) y que pueda comprender los contenidos de la gráfica.
+## Se propone una gráfica donde pueda ser leída por cualquier persona sin dificualtad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar (en este caso sobre los contagios del virtus COVID 19) y que pueda comprender los contenidos de la gráfica.
 
 
 # Conclusiones (FALTA)
