@@ -36,6 +36,7 @@ library(dplyr)
 library(kableExtra)
 #library(ggplot2)
 library(plotly)
+head(mtcars)
 
 # CARGA DE LA BASE DE DATOS
 basePercepcionOriginal <- read_csv("base_percepcion.csv")
