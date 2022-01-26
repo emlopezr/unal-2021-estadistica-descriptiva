@@ -282,5 +282,3 @@ ggplot(data = mtcars, aes(x = gear)) +
 # Conclusiones (FALTA)
 
 # Bibliografía (FALTA)
-
-Esto es un texto de prueba
