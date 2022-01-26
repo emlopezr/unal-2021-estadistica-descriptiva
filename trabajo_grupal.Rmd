@@ -43,7 +43,6 @@ library(dplyr)
 library(kableExtra)
 library(tidyverse)
 library(plotly)
-head(mtcars)
 
 # CARGA DE LA BASE DE DATOS
 basePercepcionOriginal <- read_csv("base_percepcion.csv")
@@ -300,16 +299,11 @@ Por otro lado para las preguntas 4, 5 y 6. La gráfica que más se acercó al va
 
 # Propuesta de experimento similar
 
-```{r}
-ggplot(data = mtcars, aes(x = gear)) + 
-  geom_bar(color = 'red', fill = 'chartreuse') + 
-  xlab("Referencia de países bajos con contagios") + 
-  ylab("Persona contagiadas entre 0 y 1500") + 
-  ggtitle("Gráfico de Barras sobre el aumento de contagios según la OMS") +
-  coord_flip()
-```
+https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr
 
-Se propone una gráfica donde pueda ser leída por cualquier persona sin dificultad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar (en este caso sobre los contagios del virus COVID 19) y que pueda comprender los contenidos de la gráfica.
+Se presenta un experimento sobre los contagios de COVID 19 que en esta base de datos que se tiene como referencia los datos están actualizados hasta el 25 de enero de 2022. Proponemos hacer preguntas y diferente tipo de gráficas que puedan ser leídas con facilidad por personas de diferentes edades y que no necesariamente estén cursando el curso que actualmente vemos donde aprendemos a explicar, leer y comprender gráficas.  Por ejemplo, queremos que un niño de aproximadamente 10-11 años pueda entender lo que en la gráfica se está expresando, así mismo con personas que superan los 70-80 años; inclusive personas que son de carreras que no se relacionan en nada con la estadística, ni con números y que nunca durante su programa han visto gráficas.
+
+Las gráficas se expresarían por la fecha y cuidades con mayores contagios en tiempos determinamos, también una variable importante podría ser el sexo, hacer comparaciones sobre que tipo de sexo se contagian más y de las variables más relevantes podrían el estado actual de las personas contagiadas. ¿De las personas que dan positivo a esta enfermedad, cuáles están en la casa y cuáles hospitalizadas? Teniendo en cuenta la fecha en la que se diagnostica positivo la persona, ¿Cuánto tiempo tardó en recuperarse? ¿Qué cuidad informa mayores contagios?
 
 # Conclusiones (FALTA)
 
@@ -317,4 +311,5 @@ Se propone una gráfica donde pueda ser leída por cualquier persona sin dificul
 
 - **Periódico El Colombiano.** [La minería: un debate entre el riesgo y su aporte](https://www.elcolombiano.com/negocios/economia/mineria-que-tanto-afecta-al-medioambiente-EB13561207)
 
-
+- **Propuesta base de datos sobre contagios de COVID 19** (https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr
+)
