@@ -43,7 +43,6 @@ library(dplyr)
 library(kableExtra)
 library(tidyverse)
 library(plotly)
-head(mtcars)
 
 # CARGA DE LA BASE DE DATOS
 basePercepcionOriginal <- read_csv("base_percepcion.csv")
