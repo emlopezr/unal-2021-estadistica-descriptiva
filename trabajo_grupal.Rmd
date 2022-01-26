@@ -57,6 +57,15 @@ head(basePercepcionOriginal) %>% kbl() %>% kable_material(c("striped", "hover"))
 
 *Cabe recalcar que por la estética del informe se cambiaron los nombres de las columnas de la base de datos original antes de imprimirla*
 
+### Siglas utilizadas
+
+- **Q1:** Se refiere a la respuesta de la pregunta 1
+- **Q2:** Se refiere a la respuesta de la pregunta 2
+- **Q3:** Se refiere a la respuesta de la pregunta 3
+- **Q4:** Se refiere a la respuesta de la pregunta 4
+- **Q5:** Se refiere a la respuesta de la pregunta 5
+- **Q6:** Se refiere a la respuesta de la pregunta 6
+
 # Depuración de la base de datos
 
 Como podemos observar en la base de datos original se cuentan con 9 columnas, pero llegamos a la conclusión que para el estudio que se va a realizar a partir de esta, son inservibles 2 de ellas. Las columnas que eliminaremos son:
@@ -163,7 +172,8 @@ grupo3 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==3,]
 grupo4 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==4,]
 grupo5 <- basePercepcionCorregida[basePercepcionCorregida$Grupo==5,]
 ```
-Tabla de las medias de los datos de cada pregunta en cada uno de los grupos
+4
+**Tabla de las medias de los datos de cada pregunta en cada uno de los grupos:**
 
 ```{r}
 # Se calculan las medias de los datos de cada pregunta en cada uno de los grupos
@@ -186,7 +196,7 @@ medias <- data.frame(Grupos,Q1,Q2,Q3,Q4,Q5,Q6)
 medias %>% kbl() %>% kable_material(c("striped", "hover"))
 ```
 
-Tabla de las desviaciones estándar de los datos de cada pregunta en cada uno de los grupos
+**Tabla de las desviaciones estándar de los datos de cada pregunta en cada uno de los grupos:**
 
 ```{r}
 # Se calculan las desviaciones estándar de los datos de cada pregunta en cada uno de los grupos
@@ -253,7 +263,18 @@ Antes de hacer un análisis de los resultados es necesario tener presente lo sig
   
 ![](05_barras_horizontales.png){width='600px' height='450px'}  
 
-A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas de la desviación estándar__, se puede hacer el siguiente análisis:  
+**Tabla de medias:**
+```{r}
+medias %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+**Tabla de desviaciones:**
+```{r}
+desviaciones %>% kbl() %>% kable_material(c("striped", "hover"))
+```
+
+
+A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas de la desviación estándar__, se puede hacer el siguiente análisis:
 
 - __La pregunta Q1__, producción esperada en la Jagua, y __la pregunta Q3__, producción esperada en Cerromatoso, tuvieron una media muy similar, sin importar el tipo de gráfico. De igual forma fueron las preguntas con menor desviación estándar en los diferentes tipos de gráficos.
 
@@ -298,26 +319,33 @@ A partir de esto se puede concluir que fue más fácil para los estudiantes pred
 
 __La gráfica Q3__, puede ser una opción válida, aunque existen gráficas mejores como las anteriormente mencionadas, ya que estas poseen menor desviación estándar en la mayoría de preguntas, en comparación con el gráfico 3.
 
-Por otro lado, a los estudiantes se les hizo más difícil dar una respuesta usando las graficas __Q1__ y __Q4__, ya que las respuestas no fueron tan uniformes(Son las gráficas con mayor dispersión) y la diferencia entre la respuesta media y el valor real fue mayor(La predicción está alejada del valor real). De esta forma se concluye que los gráficos de __círculos y cubos, y de pasteles 3D, son los menos recomendables__ para representar datos y generar una buena percepción, siendo el de círculos y cubos peor.
+Por otro lado, a los estudiantes se les hizo más difícil dar una respuesta usando las graficas __Q1__ y __Q4__, ya que las respuestas no fueron tan uniformes(Son las gráficas con mayor dispersión) y la diferencia entre la respuesta media y el valor real fue mayor (La predicción está alejada del valor real). De esta forma se concluye que los gráficos de __círculos y cubos, y de pasteles 3D, son los menos recomendables__ para representar datos y generar una buena percepción, siendo el de círculos y cubos peor.
 
 # Propuesta de experimento similar
 
-https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr
+Se presenta un experimento sobre los contagios de COVID 19. Como referencia tomamos la base de datos oficial proporcionada por el gobierno de Colombia con los datos actualizados hasta el 25 de enero de 2022. Proponemos hacer preguntas con base en diferentes gráficas que representen la cantidad de contagios discretizados en diferentes grupos (Sexo, edad, región, etc.). El objetivo del experimento es identificar cual es el tipo de gráfica que es más fácilmente comprendida por personas de diferentes edades, nivel académico, estrato, entre otros. Para esto, tomaremos muestras de diferentes poblaciones, puede ser por ejemplo niños de aproximadamente 10-11 años, personas que superan los 70-80 años o adultos jóvenes con nivel de estudio medio en distintas áreas del conocimiento que no necesariamente sean afines a la matemática o la estadística.
 
-Se presenta un experimento sobre los contagios de COVID 19 que en esta base de datos que se tiene como referencia los datos están actualizados hasta el 25 de enero de 2022. Proponemos hacer preguntas y diferente tipo de gráficas que puedan ser leídas con facilidad por personas de diferentes edades y que no necesariamente estén cursando el curso que actualmente vemos donde aprendemos a explicar, leer y comprender gráficas.  Por ejemplo, queremos que un niño de aproximadamente 10-11 años pueda entender lo que en la gráfica se está expresando, así mismo con personas que superan los 70-80 años; inclusive personas que son de carreras que no se relacionan en nada con la estadística, ni con números y que nunca durante su programa han visto gráficas.
+Con base en esto, el estudio pretende contestar preguntas del tipo:
+- ¿Cuál es el tipo de gráfica que es más fácilmente entendible entre todas las poblaciones?
+- ¿Cuál es el tipo de gráfica que es más fácilmente entendible para los niños?
+- ¿Cuál es el tipo de gráfica que es más fácilmente entendible para los adultos mayores?
+- ¿El nivel de estudios de una persona influye en su capacidad para comprender los distintos tipos de gráficas?
+- ¿Cuál es el rango de edad que tuvo mejor desempeño en la comprensión de las gráficas?
+- ¿Cuál fue el desempeño al comprender las gráficas de las personas en distintas áreas del conocimiento no afines a la matemáticas? ¿Fue mejor, peor o tuvieron el mismo desempeño?
+- Entre otras
 
-Las gráficas se expresarían por la fecha y cuidades con mayores contagios en tiempos determinamos, también una variable importante podría ser el sexo, hacer comparaciones sobre que tipo de sexo se contagian más y de las variables más relevantes podrían el estado actual de las personas contagiadas. ¿De las personas que dan positivo a esta enfermedad, cuáles están en la casa y cuáles hospitalizadas? Teniendo en cuenta la fecha en la que se diagnostica positivo la persona, ¿Cuánto tiempo tardó en recuperarse? ¿Qué cuidad informa mayores contagios?
+Como se mencionó anteriormente, los datos que se utilizarán en el estudio se encuentran en el siguiente enlace de Datos Abiertos Colombia: [Casos positivos de COVID-19 en Colombia](https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr)
 
 # Conclusiones 
 A partir de los análisis realizados anteriormente, se llegan a las siguientes conclusiones:
 
-1. __Q2__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepción __uniforme__ por parte de los estudiantes en la __producción esperada__.
+1. __La pregunta  2__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepción __uniforme__ por parte de los estudiantes en la __producción esperada__. Independientemente del tipo de gráfica utilizada.
 
-2. __Q3__, que hace referencia a Cerromatoso, presenta la __menor dispersión de los datos__, lo que indica que la percecpión de los estudiantes fue __uniforme en la producción esperada__.
+2. __La pregunta 3__, que hace referencia a Cerromatoso, presenta la __menor dispersión de los datos__, lo que indica que la percepción de los estudiantes fue __uniforme en la producción esperada__. Independientemente del tipo de gráfica utilizada.
 
-3. __Q5__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepcion __uniforme__ por parte de los estudiantes en __Regalias e impuestos__.
+3. __La pregunta  5__, que hace referencia a Centro del Cesar, presenta la __mayor dispersión de los datos__, lo que indica que __no__ hubo una percepción __uniforme__ por parte de los estudiantes en __Regalías e impuestos__. Independientemente del tipo de gráfica utilizada.
 
-4. __Q4__, que hace referencia a La Jagua, presenta la __menor dispersión de los datos__, lo que indica que la percepcion de los estudiantes fue __uniforme en Regalias e impuestos__.
+4. __La pregunta 4__, que hace referencia a La Jagua, presenta la __menor dispersión de los datos__, lo que indica que la percepción de los estudiantes fue __uniforme en Regalías e impuestos__. Independientemente del tipo de gráfica utilizada.
 
 5. Las gráficas de __barras verticales y horizontales__, generan percepciones __más uniformes__. Siendo la de __barras horizontales__, la que obtuvo respuestas __más similares__.
 
@@ -329,11 +357,12 @@ A partir de los análisis realizados anteriormente, se llegan a las siguientes c
 
 9. La gráfica de __barras horizontales__ es la que genera __resultados más óptimos__, cuando se quiere evaluar la __percepción__ de las personas.
 
-10. La gráfica de __cubos y circulos__ es la que genera los __peores resultados__ a la hora de evaluar la __percepción__ de las personas.
+10. La gráfica de __cubos y círculos__ es la que genera los __peores resultados__ a la hora de evaluar la __percepción__ de las personas.
+
+11. Con base en las conclusiones anteriores se sugiere que para la representación de datos no se utilicen gráficas que dependan de la perspectiva (Como es el caso de aquellas en 3D), ya que esto puede influir negativamente en el cálculo de la proporción por parte del observador. Además, una buena estrategia que puede ayudar a mejorar la comprensión del observador sería que los elementos de la gráfica se encuentren agrupados (Como es el caso de los diagramas de barras), ya que al estar más juntos se hace mucho más fácil la interpretación de la proporción entre los elementos.
 
 # Bibliografía
 
 - **Periódico El Colombiano.** [La minería: un debate entre el riesgo y su aporte](https://www.elcolombiano.com/negocios/economia/mineria-que-tanto-afecta-al-medioambiente-EB13561207)
 
-- **Propuesta base de datos sobre contagios de COVID 19** (https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr
-)
+- **Datos Abiertos Colombia.** [Casos positivos de COVID-19 en Colombia](https://www.datos.gov.co/Salud-y-Protecci-n-Social/Casos-positivos-de-COVID-19-en-Colombia/gt2j-8ykr)
