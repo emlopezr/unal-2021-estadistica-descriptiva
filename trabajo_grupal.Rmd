@@ -261,10 +261,23 @@ A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas 
 - __La gáfica del grupo 1__, circulos y cubos, y __la gráfica del grupo 4__, pasteles 3D, fueron las que presentaron mayor desviación estandar en las diferentes preguntas y en comparación con los demás tipos de gráficos. Esto quiere decir que a los estudiantes se les hizo más difícil dar una respuesta usando estas gráficas. De esta forma se concluye que los gráficos de __circulos y cuos, y de pasteles 3D, son los menos recomendables__ para realizar experimentos de percepción como el realizado, siendo el de circulos y cubos peor.
 
 
-
-
-  
+```{r}
 # Propuesta de experimento similar (FALTA)
+par(bg="grey98", mar=c(3,3,3,3), mfcol=c(1,2))
+#Primer gráfico
+plot(1:100, type="n", axes=F, xlab = "", ylab="", bg="white")
+rect(-10, -10, 120, 120, col="aquamarine")
+box(lty = 3)
+mtext(c("propuesta = 1", "propuesta = 2", "propuesta = 3", "propuesta = 4"),
+side = c(1, 2, 3, 4), col = "grey", line = 1, cex = 1.5)
+#Segundo gráfico
+plot(1:100, type="n", axes=F, xlab = "", ylab="", bg="white")
+rect(-10, -10, 120, 120, col="chocolate4")
+box(lty = 3)
+mtext(c("sitios concurridos = 1", "sitios concurridos = 2", "sitios concurridos = 3", "sitios concurridos = 4"),
+side = c(1, 2, 3, 4), col = "grey", line = 1, cex = 1.5)
+```
+Se propone una gráfica donde pueda ser leída por cualquier persona sin dificualtad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar y que pueda comprender los contenidos de la gráfica.
 
 # Conclusiones (FALTA)
 
