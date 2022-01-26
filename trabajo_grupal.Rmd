@@ -276,7 +276,7 @@ ggplot(data = mtcars, aes(x = gear)) +
   coord_flip()
 ```
 
-Se propone una gráfica donde pueda ser leída por cualquier persona sin dificualtad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar (en este caso sobre los contagios del virtus COVID 19) y que pueda comprender los contenidos de la gráfica.
+## Se propone una gráfica donde pueda ser leída por cualquier persona sin dificualtad y que no necesariamente sea estudiante de algunos de los programas que actualmente vemos, que también pueda asignarle unos valores al tema que se vaya hablar (en este caso sobre los contagios del virtus COVID 19) y que pueda comprender los contenidos de la gráfica.
 
 
 # Conclusiones (FALTA)
