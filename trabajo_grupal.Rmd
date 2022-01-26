@@ -52,7 +52,7 @@ head(basePercepcionOriginal) %>% kbl() %>% kable_material(c("striped", "hover"))
 
 # Depuración de la base de datos
 
-Como podemos observar en la base de datos original, se cuenta con 9 columnas, pero llegamos a la conclusión que para el estudio que se va a realizar a partir de esta, nos son inservibles 2 de ellas. Las columnas que eliminaremos son:
+Como podemos observar en la base de datos original se cuentan con 9 columnas, pero llegamos a la conclusión que para el estudio que se va a realizar a partir de esta, son inservibles 2 de ellas. Las columnas que eliminaremos son:
 
 - **Enviado:** Que nos dice la hora a la cual el estudiante envió sus respuestas al sistema, en este estudio no nos enfocaremos en el tiempo que les tomó a los estudiantes rersponder, si no en sus respuestas.
 
@@ -225,9 +225,45 @@ grafica_456
 ```
 
 
-# Análisis de los resultados (FALTA)
+# Análisis de los resultados
+Antes de hacer un analisis de los resultados es necesario tener presente lo siguiente: 
+
+- **Grupo 1**: Corresponde a la gráfica de circulos y cubos.  
+  
+![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\01_circulos_cubos (1).png){width='500px' height='250px'}  
+
+- **Grupo 2**: Corresponde a la gráfica de barras verticales.   
+  
+![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\02_barras_verticales.png){width='600px' height='450px'}  
+
+- **Grupo 3**: Corresponde a la gráfica de pasteles.  
+  
+![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\03_pasteles.png){width='600px' height='450px'}  
+
+- **Grupo 4**: Corresponde a la gráfica de pasteles 3D.  
+  
+![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\04_pasteles3D.png){width='600px' height='450px'}  
+
+- **Grupo 5**: Corresponde a la gráfica de barra horizontales.  
+  
+![](C:\Users\Cardo\Documents\GitHub\EDAED_TrabajoGrupal1\05_barras_horizontales.png){width='600px' height='450px'}  
+
+A partir de la __tabla de las medias de los datos__ y de __la tabla y gráficas de la desviación estandar__, se puede hacer el siguiente análisis:  
+
+- __La pregunta Q1__, producción esperada en la Jagua, y __la pregunta Q3__, producción esperada en Cerromatoso, tuvieron una media muy similar, sin importar el tipo de gráfico. De igual forma fueron las preguntas con menor desviación estandar en los diferentes tipos de gráficos. A partir de esto podemos concluir que los estudiantes respondieron con menor dispersión a estas preguntas, es decir que las respuestas que dieron fueron muy cercanas y más faciles de predecir.
+
+- __La pregunta Q2__, producción esperada en el Centro del Cesar, y __la pregunta Q5__, regalias e impuestos en el Centro del Cesar, presentaron una mayor desviación estándar en comparación a las otras preguntas y sin importar el tipo de gráfico. A partir de esto se puede concluir que fueron las preguntas donde se fue más dificíl predecir el valor correspondiente en los diferentes gráficos y hubo mayor dispersión en las respuestas.
+
+- __La gráfica del grupo 5__, barras horizontales, y __la gráfica del grupo 2__, barras verticales, fueron las que obtuvieron menor desviación estandar en las diferentes preguntas. A partir de esto se puede concluir que fue más fácil para los estudiantes predecir el valor de las diferentes preguntas usando estas gráficas, ya que las respuestas fueron similares (Son las gráficas con menor dispersión). De esta forma se concluye que el __gráfico de barras horizontales es el más recomendable__ para realizar experimentos de percepción, como el que fue realizado, __seguido del gráfico de barras verticales__. Es de preferencia el de barras ya que tiene menor dispersión en comparación al de pasteles. Aún así el de pasteles sigue siendo muy bueno.
+
+- __La gráfica del grupo 3__, de pasteles, puede ser una opción válida aunque existen gráficas mejores como las anteriormente mencionadas, ya que estas poseen menor desviación estandar en la mayoria de preguntas, en comparación con el gráfico 3.
+
+- __La gáfica del grupo 1__, circulos y cubos, y __la gráfica del grupo 4__, pasteles 3D, fueron las que presentaron mayor desviación estandar en las diferentes preguntas y en comparación con los demás tipos de gráficos. Esto quiere decir que a los estudiantes se les hizo más difícil dar una respuesta usando estas gráficas. De esta forma se concluye que los gráficos de __circulos y cuos, y de pasteles 3D, son los menos recomendables__ para realizar experimentos de percepción como el realizado, siendo el de circulos y cubos peor.
 
 
+
+
+  
 # Propuesta de experimento similar (FALTA)
 
 # Conclusiones (FALTA)
