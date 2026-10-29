@@ -16,11 +16,11 @@ output:
 
 ### Miembros del equipo
 
-- Andrés Felipe Aparicio Mestre - [anapariciom@unal.edu.co](mailto:anapariciom@unal.edu.co)
-- Emmanuel López Rodríguez - [emlopezr@unal.edu.co](mailto:emlopezr@unal.edu.co)
-- José David Cardona Soto - [jcardonaso@unal.edu.co](mailto:jcardonaso@unal.edu.co)
-- Jerónimo Gómez Restrepo - [jegomezre@unal.edu.co](mailto:jegomezre@unal.edu.co)
-- Samuel Alahín López Cadavid - [samlopez@unal.edu.co](mailto:samlopez@unal.edu.co)
+- Andrés Felipe Aparicio Mestre
+- Emmanuel López Rodríguez
+- José David Cardona Soto
+- Jerónimo Gómez Restrepo
+- Samuel Alahín López Cadavid
 
 # Introducción y contextualización  
 En el articulo titulado [La minería: un debate entre el riesgo y su aporte](https://www.elcolombiano.com/negocios/economia/mineria-que-tanto-afecta-al-medioambiente-EB13561207) del periódico el Colombiano, aseguran que promover la minería legal en Colombia traerá mayores empleos para la población, mayor inversión en el país y numerosos ingresos económicos gracias a la actividad extractiva minera. Durante años se ha creído que la minería trae consigo grandes afectaciones ambientales, por la contaminación de fuentes hídricas y del suelo, y a partir de esto afectaciones para la salud, sin embargo profesores y geólogos aseguran que estás afirmaciones son falsas, ya que con el avance tecnológico de hoy en día, estas afectaciones son mitigadas y el impacto ambiental es casi nulo.
